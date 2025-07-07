@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/chpigea/oac_register/issues"
   },
-  "homepage": "https://github.com/chpigea/oac_register#readme"
+  "homepage": "https://github.com/chpigea/oac_register#readme",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "express": "^5.1.0"
+  }
 }
