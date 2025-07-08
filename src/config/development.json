@@ -1,4 +1,5 @@
 {
+	"protocol": "http",
 	"port": 4001,
 	"store": {
 	}
