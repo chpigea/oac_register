@@ -2,9 +2,10 @@
   "name": "@igea/oac_register",
   "version": "1.0.3",
   "description": "Register service for the OAC project",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,9 @@
   "dependencies": {
     "axios": "1.10.0",
     "express": "5.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.10"
   }
 }
