@@ -2,5 +2,14 @@
 	"protocol": "http",
 	"port": 4001,
 	"store": {
+		"type": "pg",
+		"pg": {
+			"host": "127.0.0.1",
+			"port": "5432",
+			"user": "postgres",
+			"password": "postgres",
+			"database": "oac",
+			"schema": "public"
+  		}
 	}
 }
