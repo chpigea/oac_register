@@ -12,6 +12,11 @@ class StoreInterface{
             reject(new Error('Metod <get> not implemented yet'))
         }); 
     }
+    delete(service){ 
+        return new Promise((resolve, reject) => {
+            reject(new Error('Metod <delete> not implemented yet'))
+        });
+    }
 }
 
 module.exports = StoreInterface

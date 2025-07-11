@@ -18,7 +18,7 @@ class StorePg extends StoreMemory {
         return new Promise(async (resolve, reject) => {
             try{
                 await this.db(table).insert(service);
-                resolve(true)
+                return super.add(service)
             }catch(e){
                 if(e.message.includes('microservices_uq'))
                     resolve(true)
@@ -33,6 +33,18 @@ class StorePg extends StoreMemory {
             try{
                 this.services = await this.db(table).select('*');
                 resolve(this.services)
+            }catch(e){
+                reject(e)
+            }
+        });
+    }
+
+    delete(service){ 
+        return new Promise(async(resolve, reject) => {
+            try{
+                const deleted = await this.db(table).where(service).del();
+                if(deleted) return super.delete(service)
+                else resolve()    
             }catch(e){
                 reject(e)
             }
