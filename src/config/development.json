@@ -1,7 +1,7 @@
 {
 	"protocol": "http",
 	"port": 4001,
-	"check_every": 30,
+	"check_every": 10,
 	"store": {
 		"type": "pg",
 		"pg": {
