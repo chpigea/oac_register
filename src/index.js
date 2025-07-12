@@ -9,8 +9,8 @@ app.use(express.json());
 const store = StoreFactory.fromOptions(config.store)
 
 const checkService = async function(service){
-  let { protocol, host, port } = service
-  let url = `${protocol}://${host}:${port}/health`
+  let { protocol, host, port, name } = service
+  let url = `${protocol}://${host}:${port}/${name}/health`
   console.log(`HEALTH CHECK  => ${url}`)
   let health = false
   try{
