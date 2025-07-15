@@ -1,23 +1,18 @@
 const knex = require('knex')
 const StoreMemory = require('./storeMemory')
-const config = require('../config')
-const schema = config.store.pg.schema || 'public'
+const { db, schema } = require('./db')
 const table = `${schema}.microservices`
 
 class StorePg extends StoreMemory {
     
     constructor(){
         super()
-        this.db = knex({
-            client: 'pg', 
-            connection: config.store.pg
-        });
     }
 
     add(service){ 
         return new Promise(async (resolve, reject) => {
             try{
-                await this.db(table).insert(service);
+                await db(table).insert(service);
                 return super.add(service)
             }catch(e){
                 if(e.message.includes('microservices_uq'))
@@ -31,7 +26,7 @@ class StorePg extends StoreMemory {
     get(){ 
         return new Promise(async (resolve, reject) => {
             try{
-                this.services = await this.db(table).select('*');
+                this.services = await db(table).select('*');
                 resolve(this.services)
             }catch(e){
                 reject(e)
@@ -42,7 +37,7 @@ class StorePg extends StoreMemory {
     delete(service){ 
         return new Promise(async(resolve, reject) => {
             try{
-                const deleted = await this.db(table).where(service).del();
+                const deleted = await db(table).where(service).del();
                 if(deleted) return super.delete(service)
                 else resolve()    
             }catch(e){
