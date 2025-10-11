@@ -1,6 +1,6 @@
 {
   "name": "@igea/oac_register",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Register service for the OAC project",
   "main": "src/index.js",
   "bin": {
